@@ -22,6 +22,9 @@
         placeholder="Enter your password"
       />
     </div>
+    <div class="error" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
 
     <button class="auth-btn" (click)="login()">
       Login

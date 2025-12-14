@@ -111,3 +111,10 @@
 .switch a {
   color: #93c5fd;
 }
+.error {
+  margin-bottom: 14px;
+  font-size: 20px;
+  color: #f7b6b6; 
+  border-radius: 12px;
+  border-color: red;
+}
