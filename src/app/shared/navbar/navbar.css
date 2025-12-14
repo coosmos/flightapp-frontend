@@ -63,6 +63,7 @@
     height: 44px;
     object-fit: cover;
 }
+
 /* Navigation Links */
 .nav-links {
     display: flex;
@@ -147,6 +148,15 @@
     transform: translateY(0);
 }
 
+.user {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-right: -10px;
+    /* Bring it slightly closer to the logout button if desired, or keep standard gap */
+    letter-spacing: 0.5px;
+}
+
 /* Mobile Menu Toggle */
 .menu-toggle {
     display: none;
@@ -199,7 +209,8 @@
         opacity: 1;
     }
 
-    .nav-links a {
+    .nav-links a,
+    .user {
         font-size: 18px;
     }
 

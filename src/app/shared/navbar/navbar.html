@@ -13,13 +13,16 @@
       <a (click)="closeMobileMenu()">Flights</a>
       <a (click)="closeMobileMenu()">Deals</a>
       <a (click)="closeMobileMenu()">Explore</a>
-      <a routerLink="/login" (click)="closeMobileMenu()">Login</a>
-      <button
-        class="signup-btn"
-        routerLink="/signup"
-        (click)="closeMobileMenu()">
-        Sign up
-      </button>
+      <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+  <a routerLink="/login">Login</a>
+  <button class="signup-btn" routerLink="/signup">Sign up</button>
+</ng-container>
+
+<ng-template #loggedIn>
+  <span class="user">Hi, {{ getUsername() }}</span>
+  <button class="signup-btn" (click)="onLogout()">Logout</button>
+</ng-template>
+
     </nav>
 
     <div

@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { isLoggedIn, getUsername, logout } from '../utils/auth.util';
 
 @Component({
   selector: 'app-navbar',
@@ -12,7 +13,10 @@ import { RouterLink } from '@angular/router';
 export class Navbar{
   isScrolled = false;
   isMobileMenuOpen = false;
+  isLoggedIn = isLoggedIn;
+getUsername = getUsername;
 
+constructor(private router: Router){}
   @HostListener('window:scroll')
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;
@@ -24,5 +28,10 @@ export class Navbar{
 
   closeMobileMenu() {
     this.isMobileMenuOpen = false;
+  }
+
+  onLogout() {
+    logout();
+    this.router.navigate(['/login']);
   }
 }
