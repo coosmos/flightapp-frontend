@@ -1,47 +1,53 @@
 <div class="search-card">
   <div class="search-bar">
-    <!-- From Field -->
+
+    <!-- From -->
     <div class="field">
       <label>From</label>
-      <input 
-        type="text" 
-        placeholder="India (IN)" 
-        [(ngModel)]="fromLocation"
-      />
+      <div class="field-box">
+        <input
+          type="text"
+          placeholder="India (IN)"
+          [(ngModel)]="fromLocation"
+        />
+      </div>
     </div>
 
-    <!-- Toggle Button -->
-    <button class="toggle-btn" (click)="swapLocations()">
-      <div class="toggle-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M7 16V4M7 4L3 8M7 4L11 8" />
-          <path d="M17 8V20M17 20L21 16M17 20L13 16" />
-        </svg>
-      </div>
+    <!-- Swap -->
+    <button class="toggle-btn" (click)="swapLocations()" aria-label="Swap locations">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 16V4M7 4L3 8M7 4L11 8" />
+        <path d="M17 8V20M17 20L21 16M17 20L13 16" />
+      </svg>
     </button>
 
-    <!-- To Field -->
+    <!-- To -->
     <div class="field">
       <label>To</label>
-      <input 
-        type="text" 
-        placeholder="Country, city or airport" 
-        [(ngModel)]="toLocation"
-      />
+      <div class="field-box">
+        <input
+          type="text"
+          placeholder="Country, city or airport"
+          [(ngModel)]="toLocation"
+        />
+      </div>
     </div>
 
-    <!-- Date Field -->
+    <!-- Date -->
     <div class="field">
       <label>Date</label>
-      <input 
-        type="date" 
-        [(ngModel)]="flightDate"
-      />
+      <div class="field-box">
+        <input
+          type="date"
+          [(ngModel)]="flightDate"
+        />
+      </div>
     </div>
 
-    <!-- Search Button -->
+    <!-- Search -->
     <button class="search-btn" (click)="onSearch()">
       Search
     </button>
+
   </div>
 </div>

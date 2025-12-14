@@ -1,115 +1,95 @@
-/* Outer wrapper */
 .search-card {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 980px;
 }
 
-/* Main horizontal bar */
 .search-bar {
   display: grid;
   grid-template-columns: 1.2fr auto 1.2fr 1fr auto;
   align-items: stretch;
 
-  /* 1px gap trick */
-  background: #e5e7eb;     /* gap color */
-  padding: 1px;            /* 👈 creates 1px gaps */
-
-  border-radius: 14px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 18px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
   overflow: hidden;
 }
 
-/* Common height */
-.field,
-.toggle-btn,
-.search-btn {
-  height: 80px;
-  background: #ffffff;
-}
-
-/* Input blocks */
+/* fields */
 .field {
-  padding: 12px 20px;
+  height: 78px;
+  padding: 14px 20px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 6px;
+
+  background: rgba(255, 247, 237, 0.65);
+  border-right: 2px solid rgba(0, 0, 0, 0.08);
+}
+.field:hover {
+  background: rgba(255, 237, 213, 0.85);
 }
 
-/* Labels */
+.field:last-of-type {
+  border-right: none;
+}
+
+/* labels */
 .field label {
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
-  color: #6b7280;
-  line-height: 1;
+  color: #000000;
+  letter-spacing: 0.3px;
 }
 
-/* Inputs */
+/* inputs */
 .field input {
   border: none;
   outline: none;
   background: transparent;
 
-  font-size: 15px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   color: #1f2937;
-
-  height: 26px;
-  line-height: 26px;
-  padding: 0;
 }
 
 .field input::placeholder {
-  color: #9ca3af;
+  color: #9a3412;
+  font-weight: 500;
 }
 
-/* Date picker */
-.field input[type="date"] {
-  font-family: inherit;
-}
-
-.field input[type="date"]::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-/* Swap button */
+/* swap */
 .toggle-btn {
-  width: 56px;
+  width: 64px;
+  height: 78px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border:none;
+  background: rgba(255, 237, 213, 0.9);
+  border: none;
+  border-right: 2px solid rgba(0, 0, 0, 0.08);
+
+  font-size: 20px;
+  font-weight: 700;
+  color: #580b0b;
+
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .toggle-btn:hover {
-  background: #f9fafb;
+  background: rgba(255, 224, 178, 1);
 }
 
-.toggle-btn svg {
-  width: 20px;
-  height: 20px;
-  stroke: #6b7280;
-}
-
-/* Search button */
+/* CTA */
 .search-btn {
-  padding: 0 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100px;
+  padding: 0 40px;
 
   background: linear-gradient(135deg, #f97316, #ea580c);
   color: #ffffff;
 
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
 
   border: none;
   cursor: pointer;
@@ -117,40 +97,23 @@
 }
 
 .search-btn:hover {
-  background: linear-gradient(135deg, #ea580c, #c2410c);
-  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.35);
-  transform: translateY(-1px);
+  box-shadow: inset 0 0 0 999px rgba(0, 0, 0, 0.08);
 }
 
-.search-btn:active {
-  transform: translateY(0);
-}
-
-/* Rounded edges only on extremes */
-.field:first-child {
-  border-radius: 13px 0 0 13px;
-}
-
-.search-btn {
-  border-radius: 0 13px 13px 0;
-}
-
-/* ------------------ */
-/* Responsive (stack) */
-/* ------------------ */
-
+/* responsive */
 @media (max-width: 1024px) {
   .search-bar {
     grid-template-columns: 1fr;
   }
 
   .field,
-  .toggle-btn {
-    height: 64px;
+  .toggle-btn,
+  .search-btn {
+    border-right: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
   }
 
   .search-btn {
-    height: 56px;
-    border-radius: 0 0 13px 13px;
+    border-bottom: none;
   }
 }
