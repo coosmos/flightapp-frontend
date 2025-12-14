@@ -1,0 +1,38 @@
+<section class="login">
+<div class="login-overlay">
+    <div class="auth-page">
+  <div class="auth-card">
+    <h2>Welcome back</h2>
+    <p class="subtitle">Login to continue your journey</p>
+
+    <div class="field">
+      <label>Username</label>
+      <input
+        type="text"
+        [(ngModel)]="username"
+        placeholder="Enter your username"
+      />
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input
+        type="password"
+        [(ngModel)]="password"
+        placeholder="Enter your password"
+      />
+    </div>
+
+    <button class="auth-btn" (click)="login()">
+      Login
+    </button>
+
+    <p class="switch">
+      Don’t have an account?
+      <a routerLink="/signup">Sign up</a>
+    </p>
+  </div>
+</div>
+
+</div>
+</section>

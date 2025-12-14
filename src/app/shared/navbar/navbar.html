@@ -1,22 +1,31 @@
 <header class="navbar" [class.scrolled]="isScrolled">
   <div class="navbar-container">
     <div class="brand">
-        <div class="logo-container">
-              <img src="/assets/logoplane.png" alt="SkyWings Logo" />
-        </div>
-      <span>SkyWings</span>
+     <a routerLink="/" class="brand">
+  <div class="logo-container">
+    <img src="/assets/logoplane.png" alt="SkyWings Logo" />
+  </div>
+  <span>SkyWings</span>
+    </a>
     </div>
 
     <nav class="nav-links" [class.open]="isMobileMenuOpen">
       <a (click)="closeMobileMenu()">Flights</a>
       <a (click)="closeMobileMenu()">Deals</a>
       <a (click)="closeMobileMenu()">Explore</a>
-      <a (click)="closeMobileMenu()">Login</a>
-      <button class="signup-btn" (click)="closeMobileMenu()">Sign up</button>
+      <a routerLink="/login" (click)="closeMobileMenu()">Login</a>
+      <button
+        class="signup-btn"
+        routerLink="/signup"
+        (click)="closeMobileMenu()">
+        Sign up
+      </button>
     </nav>
 
-    <!-- Mobile Menu Toggle -->
-    <div class="menu-toggle" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+    <div
+      class="menu-toggle"
+      [class.active]="isMobileMenuOpen"
+      (click)="toggleMobileMenu()">
       <span></span>
       <span></span>
       <span></span>
