@@ -1,0 +1,23 @@
+<header class="navbar" [class.scrolled]="isScrolled">
+  <div class="navbar-container">
+    <div class="brand">
+      <img src="/assets/logo-plane.png" alt="SkyWings Logo" />
+      <span>SkyWings</span>
+    </div>
+
+    <nav class="nav-links" [class.open]="isMobileMenuOpen">
+      <a (click)="closeMobileMenu()">Flights</a>
+      <a (click)="closeMobileMenu()">Deals</a>
+      <a (click)="closeMobileMenu()">Explore</a>
+      <a (click)="closeMobileMenu()">Login</a>
+      <button class="signup-btn" (click)="closeMobileMenu()">Sign up</button>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <div class="menu-toggle" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
