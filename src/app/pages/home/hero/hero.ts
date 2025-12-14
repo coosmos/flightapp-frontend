@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SearchCardComponent } from "../../../shared/search-card/search-card";
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, SearchCardComponent],
   templateUrl: './hero.html',
   styleUrls: ['./hero.css']
 })

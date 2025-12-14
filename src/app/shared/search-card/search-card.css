@@ -1,0 +1,156 @@
+/* Outer wrapper */
+.search-card {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Main horizontal bar */
+.search-bar {
+  display: grid;
+  grid-template-columns: 1.2fr auto 1.2fr 1fr auto;
+  align-items: stretch;
+
+  /* 1px gap trick */
+  background: #e5e7eb;     /* gap color */
+  padding: 1px;            /* 👈 creates 1px gaps */
+
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+/* Common height */
+.field,
+.toggle-btn,
+.search-btn {
+  height: 80px;
+  background: #ffffff;
+}
+
+/* Input blocks */
+.field {
+  padding: 12px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+/* Labels */
+.field label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  line-height: 1;
+}
+
+/* Inputs */
+.field input {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2937;
+
+  height: 26px;
+  line-height: 26px;
+  padding: 0;
+}
+
+.field input::placeholder {
+  color: #9ca3af;
+}
+
+/* Date picker */
+.field input[type="date"] {
+  font-family: inherit;
+}
+
+.field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Swap button */
+.toggle-btn {
+  width: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border:none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.toggle-btn:hover {
+  background: #f9fafb;
+}
+
+.toggle-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: #6b7280;
+}
+
+/* Search button */
+.search-btn {
+  padding: 0 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.search-btn:hover {
+  background: linear-gradient(135deg, #ea580c, #c2410c);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.35);
+  transform: translateY(-1px);
+}
+
+.search-btn:active {
+  transform: translateY(0);
+}
+
+/* Rounded edges only on extremes */
+.field:first-child {
+  border-radius: 13px 0 0 13px;
+}
+
+.search-btn {
+  border-radius: 0 13px 13px 0;
+}
+
+/* ------------------ */
+/* Responsive (stack) */
+/* ------------------ */
+
+@media (max-width: 1024px) {
+  .search-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .field,
+  .toggle-btn {
+    height: 64px;
+  }
+
+  .search-btn {
+    height: 56px;
+    border-radius: 0 0 13px 13px;
+  }
+}
