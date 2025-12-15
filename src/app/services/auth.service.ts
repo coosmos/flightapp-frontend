@@ -12,4 +12,9 @@ export class AuthService {
   login(data: { username: string; password: string }) {
     return this.http.post<any>(`${this.API}/signin`, data);
   }
+
+  signup(data: { username: string; email: string; password: string }) {
+  return this.http.post(`${this.API}/signup`, data);
+}
+
 }

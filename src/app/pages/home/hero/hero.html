@@ -35,10 +35,32 @@
     </div>
 
     <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
+    <div class="scroll-indicator" (click)="scrollToDestinations()">
         <span>Discover More</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M12 5v14M19 12l-7 7-7-7" />
         </svg>
     </div>
+</section>
+
+
+<section class="destination-slider" id="destinations">
+  <div class="slider-container">
+
+    <div
+      class="slide"
+      *ngFor="let slide of slides; let i = index"
+      [class.active]="i === currentIndex"
+      [style.backgroundImage]="'url(' + slide.image + ')'"
+    >
+      <div class="slide-overlay"></div>
+
+      <div class="slide-content">
+        <span class="tagline">{{ slide.tagline }}</span>
+        <h2>{{ slide.city }}</h2>
+        <p class="price">{{ slide.price }}</p>
+      </div>
+    </div>
+
+  </div>
 </section>

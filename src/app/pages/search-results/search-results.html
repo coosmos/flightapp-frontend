@@ -1,0 +1,52 @@
+<section class="search-page">
+    <!-- Top summary bar -->
+
+    <div class="search-summary">
+        <div class="summary-left">
+            <strong>Modify Search</strong>
+            <span>India (IN) → New York (JFK) | 15 Oct 2025 | 1 Adult</span>
+        </div>
+        <button class="edit-btn">Edit</button>
+    </div>
+
+    <!-- Main content -->
+    <div class="search-layout">
+        <!-- Filters -->
+        <aside class="filters">
+            <h3>Filters</h3>
+
+            <div class="filter-group">
+                <h4>Stops</h4>
+                <label><input type="radio" /> Non-stop</label>
+                <label><input type="radio" /> 1 Stop</label>
+            </div>
+
+            <div class="filter-group">
+                <h4>Airlines</h4>
+                <label><input type="checkbox" /> Emirates</label>
+                <label><input type="checkbox" /> Air India</label>
+            </div>
+        </aside>
+
+        <!-- Results -->
+        <main class="results">
+            <h3>Flight Results</h3>
+
+            <div class="flight-card" *ngFor="let flight of flights">
+                <div class="flight-left">
+                    <strong>{{ flight.airline }}</strong>
+                    <span>{{ flight.departTime }} — {{ flight.from }}</span>
+                    <span>{{ flight.duration }} · {{ flight.stops }}</span>
+                    <span>{{ flight.arriveTime }} — {{ flight.to }}</span>
+                </div>
+
+                <div class="flight-right">
+                    <div class="price">{{ flight.price }}</div>
+                    <button>Select</button>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+</section>

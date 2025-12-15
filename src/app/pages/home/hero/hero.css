@@ -151,6 +151,90 @@
     text-transform: uppercase;
 }
 
+.destination-slider {
+  background: #000;
+  padding: 76px 0;
+}
+
+.slider-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.slide {
+  position: relative;
+  height: 420px;
+  border-radius: 28px;
+
+  background-size: cover;
+  background-position: center;
+
+  overflow: hidden;
+}
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.slide-content {
+  position: absolute;
+  bottom: 32px;
+  left: 32px;
+  z-index: 2;
+  color: white;
+}
+
+.slide-content .tagline {
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.slide-content h2 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.slide-content .price {
+  font-size: 18px;
+  opacity: 0.9;
+}
+.slider-container {
+  position: relative;
+  height: 520px;
+ 
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
+
+  background-size: cover;
+  background-position: center;
+
+  opacity: 0;
+  transform: scale(1.05);
+  transition: opacity 1.5s ease, transform 6s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+
 /* Animations */
 @keyframes fadeInUp {
     from {
