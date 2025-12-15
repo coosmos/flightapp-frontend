@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
-
+import { Router } from '@angular/router';
+import { LoaderService } from '../../services/loader.service';
 @Component({
   selector: 'app-search-card',
   standalone: true,
@@ -13,6 +14,8 @@ export class SearchCardComponent {
   fromLocation: string = '';
   toLocation: string = '';
   flightDate: string = '';
+
+  constructor(private router: Router, private loader: LoaderService) {}
 
   swapLocations(): void {
     const temp = this.fromLocation;
@@ -26,9 +29,7 @@ export class SearchCardComponent {
       to: this.toLocation,
       date: this.flightDate
     };
-
-    console.log('Search data:', searchData);
-    // Add your search logic here
-    // You can emit an event or call a service
+    this.loader.show();
+  this.router.navigate(['/search-results']);
   }
 }

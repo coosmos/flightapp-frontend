@@ -34,10 +34,26 @@
 
             <div class="flight-card" *ngFor="let flight of flights">
                 <div class="flight-left">
-                    <strong>{{ flight.airline }}</strong>
-                    <span>{{ flight.departTime }} — {{ flight.from }}</span>
-                    <span>{{ flight.duration }} · {{ flight.stops }}</span>
-                    <span>{{ flight.arriveTime }} — {{ flight.to }}</span>
+                    <div class="airline-info">
+                        <img src="/assets/flightcardlogo.png" alt="Airline" class="airline-logo">
+                        <strong>{{ flight.airline }}</strong>
+                    </div>
+
+                    <div class="flight-time">
+                        <span class="time">{{ flight.departTime }}</span>
+                        <span class="airport">{{ flight.from }}</span>
+                    </div>
+
+                    <div class="flight-duration">
+                        <span>{{ flight.duration }}</span>
+                        <img src="/assets/planeticketmid.png" alt="path" class="path-img">
+                        <span>{{ flight.stops }}</span>
+                    </div>
+
+                    <div class="flight-time">
+                        <span class="time">{{ flight.arriveTime }}</span>
+                        <span class="airport">{{ flight.to }}</span>
+                    </div>
                 </div>
 
                 <div class="flight-right">

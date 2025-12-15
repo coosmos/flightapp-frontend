@@ -1,0 +1,31 @@
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.85),
+    rgba(0, 0, 0, 0.95)
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-content {
+  text-align: center;
+  color: white;
+}
+
+.loader-content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.loader-content p {
+  font-size: 14px;
+  opacity: 0.7;
+}
