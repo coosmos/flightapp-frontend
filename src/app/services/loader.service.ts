@@ -7,7 +7,7 @@ export class LoaderService {
   loading$ = this._loading.asObservable();
 
   private startTime = 0;
-  private MIN_DURATION = 800; // ms
+  private MIN_DURATION = 2800; // ms
 
   show() {
     this.startTime = Date.now();

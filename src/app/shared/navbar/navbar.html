@@ -11,7 +11,6 @@
 
     <nav class="nav-links" [class.open]="isMobileMenuOpen">
       <a (click)="closeMobileMenu()">Flights</a>
-      <a (click)="closeMobileMenu()">Deals</a>
       <a (click)="closeMobileMenu()">Explore</a>
       <ng-container *ngIf="!isLoggedIn(); else loggedIn">
   <a routerLink="/login">Login</a>
