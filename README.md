@@ -1,8 +1,8 @@
-# FlightFrontend
+# FlightFrontend  --Fetches Real Time Flight details 
 
 A modern Angular (standalone) frontend for a flight booking system, built to work with a Spring Boot microservices backend behind an API Gateway.
 
-The application focuses on clean UX, clear flows, and real backend integration rather than mock data.
+The application focuses on clean UX, clear flows, and real backend integration rather than mock data . The backend fetched flight details using amadeus self serving api.
 
 
 https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
@@ -14,7 +14,12 @@ https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
 <img width="1899" height="936" alt="image" src="https://github.com/user-attachments/assets/717cc52f-18c0-440c-a5cc-a004b76d2d2e" />
 
 ##FlightSearch Results
-<img width="1905" height="913" alt="image" src="https://github.com/user-attachments/assets/95cdafed-6443-41ea-b31f-519d82a9a8e4" />
+<img width="1916" height="935" alt="image" src="https://github.com/user-attachments/assets/0462774b-047a-40ca-a68b-b6b1d2ee8bca" />
+
+---
+<img width="1913" height="1003" alt="image" src="https://github.com/user-attachments/assets/3af6f021-a832-47f3-b272-b2915307641b" />
+
+
 
 ## Login Screen
 <img width="1911" height="853" alt="image" src="https://github.com/user-attachments/assets/d6cbdf38-161c-423b-aa65-592455e5d480" />
