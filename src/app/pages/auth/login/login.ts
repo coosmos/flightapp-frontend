@@ -22,10 +22,10 @@ export class Login {
       username: this.username,
       password: this.password
     }).subscribe({
-      next: (res) => {
+      next: (response) => {
        this.router.navigate(['/']);
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('username', res.username);
+        localStorage.setItem('token', response.token);
+        localStorage.setItem('username', response.username);
       },
       error: (err) => {
         if(err.status===403){

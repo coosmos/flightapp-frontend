@@ -1,0 +1,32 @@
+<section class="booking-page">
+    <h2>Passenger Details</h2>
+
+    <div class="field">
+        <label>First Name</label>
+        <input [(ngModel)]="bookingObject.passengers[0].firstName" type="text">
+    </div>
+    <div class="field">
+        <label>Last Name</label>
+        <input [(ngModel)]="bookingObject.passengers[0].lastName" type="text">
+    </div>
+    <div class="field">
+        <label>Age</label>
+        <input [(ngModel)]="bookingObject.passengers[0].age" type="number">
+    </div>
+    <div class="field">
+        <label>Gender</label>
+        <input [(ngModel)]="bookingObject.passengers[0].gender" type="text">
+    </div>
+    
+    <div class="field">
+        <label>ContactEmail</label>
+        <input [(ngModel)]="bookingObject.contactEmail" type="email">
+    </div>
+
+    <div class="field">
+        <label>ContactPhone</label>
+        <input [(ngModel)]="bookingObject.contactPhone" type="tel">
+    </div>
+
+    <button (click)="confirmBooking()">Confirm Booking</button>
+</section>

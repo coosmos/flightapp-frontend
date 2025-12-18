@@ -2,67 +2,82 @@
     <!-- Top summary bar -->
 
     <div class="search-summary">
-        <div class="summary-left">
-            <strong>Modify Search</strong>
-            <span>India (IN) → New York (JFK) | 15 Oct 2025 | 1 Adult</span>
+        <div class="search-card-wrapper">
+          <app-search-card (searchEvent)="onModifySearch($event)"></app-search-card>
         </div>
         <button class="edit-btn">Edit</button>
     </div>
 
-    <!-- Main content -->
-    <div class="search-layout">
-        <!-- Filters -->
-        <aside class="filters">
-            <h3>Filters</h3>
+     <!-- Main content -->
+  <div class="search-layout">
 
-            <div class="filter-group">
-                <h4>Stops</h4>
-                <label><input type="radio" /> Non-stop</label>
-                <label><input type="radio" /> 1 Stop</label>
-            </div>
+    <!-- Filters -->
+    <aside class="filters">
+      <h3>Filters</h3>
 
-            <div class="filter-group">
-                <h4>Airlines</h4>
-                <label><input type="checkbox" /> Emirates</label>
-                <label><input type="checkbox" /> Air India</label>
-            </div>
-        </aside>
+      <div class="filter-group">
+        <h4>Stops</h4>
+        <label><input type="radio" /> Non-stop</label>
+        <label><input type="radio" /> 1 Stop</label>
+      </div>
 
-        <!-- Results -->
-        <main class="results">
-            <h3>Flight Results</h3>
+      <div class="filter-group">
+        <h4>Airlines</h4>
+        <label><input type="checkbox" /> Air India</label>
+      </div>
+    </aside>
 
-            <div class="flight-card" *ngFor="let flight of flights">
-                <div class="flight-left">
-                    <div class="airline-info">
-                        <img src="/assets/flightcardlogo.png" alt="Airline" class="airline-logo">
-                        <strong>{{ flight.airline }}</strong>
-                    </div>
+    <!-- Results -->
+    <main class="results">
+      <h3>Flight Results</h3>
 
-                    <div class="flight-time">
-                        <span class="time">{{ flight.departTime }}</span>
-                        <span class="airport">{{ flight.from }}</span>
-                    </div>
+      <div *ngIf="!hasResults" class="empty-state">
+    <h4>No flights found</h4>
+    <p>Try modifying your search criteria.</p>
+  </div>
+      <div
+        class="flight-card"
+        *ngFor="let flight of flights"
+      >
+        <div class="flight-left">
 
-                    <div class="flight-duration">
-                        <span>{{ flight.duration }}</span>
-                        <img src="/assets/planeticketmid.png" alt="path" class="path-img">
-                        <span>{{ flight.stops }}</span>
-                    </div>
+          <div class="airline-info">
+            <img
+              src="/assets/flightcardlogo.png"
+              alt="Airline"
+              class="airline-logo"
+            />
+            <strong>{{ flight.airline }}</strong>
+            <span class="flight-number">{{ flight.flightNumber }}</span>
+          </div>
 
-                    <div class="flight-time">
-                        <span class="time">{{ flight.arriveTime }}</span>
-                        <span class="airport">{{ flight.to }}</span>
-                    </div>
-                </div>
+          <div class="flight-time">
+            <span class="time">{{ flight.departureTime | date:'HH:mm' }}</span>
+            <span class="airport">{{ flight.source }}</span>
+          </div>
 
-                <div class="flight-right">
-                    <div class="price">{{ flight.price }}</div>
-                    <button>Select</button>
-                </div>
-            </div>
+          <div class="flight-duration">
+            <span>{{ getDuration(flight.departureTime, flight.arrivalTime) }}</span>
+            <img
+              src="/assets/planeticketmid.png"
+              alt="path"
+              class="path-img"
+            />
+          </div>
 
+          <div class="flight-time">
+            <span class="time">{{ flight.arrivalTime | date:'HH:mm' }}</span>
+            <span class="airport">{{ flight.destination }}</span>
+          </div>
 
-        </main>
-    </div>
+        </div>
+
+        <div class="flight-right">
+          <div class="price">$ {{ flight.price }}</div>
+          <button (click)="onSelectFlight(flight)">Select</button>
+        </div>
+      </div>
+
+    </main>
+  </div>
 </section>

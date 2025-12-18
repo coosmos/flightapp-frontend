@@ -14,7 +14,8 @@
 /* 1. DARK SEARCH SUMMARY BAR (Skyscanner Style) */
 .search-summary {
     flex-shrink: 0;
-    display: flex;
+      display: grid;
+    grid-template-columns: 1fr auto;
     justify-content: space-between;
     align-items: center;
     background: #02122c;
@@ -23,19 +24,19 @@
     width: 100%;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 5;
-    /* Below navbar but above content */
     box-sizing: border-box;
     position: sticky;
-    /* Make it stick to top when scrolling */
     top: 72px;
-    /* Stick below navbar */
+    
 }
 
-.summary-left {
+.search-card-wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
     gap: 4px;
 }
+
 
 .summary-left strong {
     font-size: 14px;
@@ -160,6 +161,19 @@
     background: #f0f4f8;
     padding: 8px 0;
     z-index: 1;
+}
+.empty-state {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  color: #64748b;
+}
+
+.empty-state h4 {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 8px;
 }
 
 /* FLIGHT CARD (Skyscanner Clone) */

@@ -3,7 +3,7 @@ import {HttpClient,HttpParams} from '@angular/common/http';
 import { Observable } from "rxjs";
 
 @Injectable({providedIn: 'root'})
-export class FlightService {
+export class BookingService {
 
     // private API='http://localhost:9090/api/flight/search';
 
@@ -16,20 +16,10 @@ export class FlightService {
   //   return this.http.post(this.API, payload);
   // }
 
-  private API='http://localhost:9090/api/flight/offers';
+  private API='http://localhost:9090/api/bookings';
 
-    searchFlights(payload: {
-  source: string;
-  destination: string;
-  date: string;
-}): Observable<any[]> {
-
-  const params = new HttpParams()
-    .set('origin', payload.source)
-    .set('destination', payload.destination)
-    .set('date', payload.date);
-
-  return this.http.get<any[]>(this.API, { params });
+    createBooking(payload:any) {
+      return this.http.post(this.API, payload);
 }
 
 }

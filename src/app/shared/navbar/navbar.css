@@ -155,11 +155,10 @@
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
     margin-right: -10px;
-    /* Bring it slightly closer to the logout button if desired, or keep standard gap */
+   
     letter-spacing: 0.5px;
 }
 
-/* Mobile Menu Toggle */
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -188,7 +187,6 @@
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
