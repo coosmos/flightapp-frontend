@@ -1,59 +1,124 @@
-# FlightFrontend
+# FlightFrontend  --Fetches Real Time Flight details 
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.9.
+A modern Angular (standalone) frontend for a flight booking system, built to work with a Spring Boot microservices backend behind an API Gateway.
 
-## Development server
+The application focuses on clean UX, clear flows, and real backend integration rather than mock data . The backend fetched flight details using amadeus self serving api.
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+# Screens
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Home
+<img width="1899" height="936" alt="image" src="https://github.com/user-attachments/assets/717cc52f-18c0-440c-a5cc-a004b76d2d2e" />
 
-```bash
-ng generate component component-name
-```
+##FlightSearch Results
+<img width="1916" height="935" alt="image" src="https://github.com/user-attachments/assets/0462774b-047a-40ca-a68b-b6b1d2ee8bca" />
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
+<img width="1913" height="1003" alt="image" src="https://github.com/user-attachments/assets/3af6f021-a832-47f3-b272-b2915307641b" />
 
-```bash
-ng generate --help
-```
 
-## Building
 
-To build the project run:
+## Login Screen
+<img width="1911" height="853" alt="image" src="https://github.com/user-attachments/assets/d6cbdf38-161c-423b-aa65-592455e5d480" />
 
-```bash
-ng build
-```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Features Implemented
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 1. Authentication
 
-```bash
-ng test
-```
+- Login and Signup flows integrated with backend
+- JWT-based authentication handled via API Gateway
+- Token stored in localStorage
+- AuthGuard to protect private routes
+- Logout clears token and redirects to login
+- Navbar reacts to authentication state (username / logout)
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+### 2. Routing & Guards
 
-```bash
-ng e2e
-```
+- Standalone Angular routing
+- Public routes:
+  - `/login`
+  - `/signup`
+- Protected routes:
+  - `/` (Home)
+  - `/search-results`
+- `AuthGuard` prevents unauthenticated access and redirects to login
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+---
 
-## Additional Resources
+### 3. Home Page
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Cinematic hero section with background image
+- Clean, minimal UI focused on search intent
+- Smooth scroll interaction for “Discover more” and explore cards
+
+---
+
+### 4. Flight Search Flow
+
+- Search triggers backend POST request:
+  - Source
+  - Destination
+  - Date
+- Request goes through API Gateway
+- Real backend response used (no mock data)
+- Loader overlay shown during search
+- Smooth transition to results page after response
+
+---
+
+### 5. Loader Overlay
+
+- Full-screen loader overlay component
+- Plays a flight animation video during search
+- Minimum visible duration to avoid flicker
+- Covers entire app and blocks interaction
+- Automatically hides after navigation completes
+
+---
+
+### 6. Search Results Page
+
+- Modify Search summary bar at top
+- Filters panel (UI-ready, logic to be added)
+- Scrollable flight results section
+- Flight cards rendered from backend response
+- Displays:
+  - Airline name
+  - Flight number
+  - Source → Destination
+  - Departure & Arrival time
+  - Price
+  - Computed flight duration
+
+---
+
+### 7. State Handling
+
+- In-memory store service to pass flight data between routes
+- Clean separation between:
+  - API calls
+  - State storage
+  - UI rendering
+- Avoids query string overload for complex data
+
+---
+
+## Backend Integration
+
+- Frontend communicates only with API Gateway
+- Backend services:
+  - Auth Service (`/api/auth`)
+  - Flight Service (`/api/flight/search`)
+- JWT validation handled at Gateway level
+- Public endpoints configured for auth and flight search
+- CORS configured for local frontend development
+
+---
