@@ -41,8 +41,8 @@ export class SearchCardComponent {
 
   this.loader.show();
   this.flightService.searchFlights(payload).subscribe({
-    next: (res) => {
-      this.store.setFlights(res);
+    next: (response) => {
+      this.store.setFlights(response);
       this.router.navigate(['/search-results']);
       this.loader.hide();
       this.searchEvent.emit(payload);

@@ -1,0 +1,80 @@
+<section class="confirmation-page">
+
+  <h2 class="page-title">
+    {{ isCancelled ? 'Booking Cancelled' : 'Booking Confirmed' }}
+  </h2>
+
+  <div class="ticket" *ngIf="booking">
+    
+    <div class="ticket-header">
+      <h3>Booking Ticket</h3>
+    </div>
+
+    <div class="ticket-body">
+      
+      <div class="info-row">
+        <span class="label">PNR</span>
+        <span class="value pnr">{{ booking.pnr }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Status</span>
+        <span class="value status" [class.cancelled]="isCancelled" [class.confirmed]="!isCancelled">
+          {{ booking.status }}
+        </span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="info-row">
+        <span class="label">Flight Number</span>
+        <span class="value">{{ booking.flightNumber }}</span>
+      </div>
+
+      <div class="info-row">
+        <span class="label">Route</span>
+        <span class="value">{{ booking.source }} to {{ booking.destination }}</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Passengers</div>
+      <div class="passenger-item" *ngFor="let p of booking.passengers; let i = index">
+        {{ i + 1 }}. {{ p.firstName }} {{ p.lastName }} - {{ p.age }}Y - {{ p.gender }}
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="section-title">Contact</div>
+      <div class="contact-item">{{ booking.contactEmail }}</div>
+      <div class="contact-item">{{ booking.contactPhone }}</div>
+
+      <div class="divider"></div>
+
+      <div class="info-row price-row">
+        <span class="label">Total Amount</span>
+        <span class="value price">₹ {{ booking.totalPrice }}</span>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="action-section" *ngIf="booking && !isCancelled">
+    <button
+      class="cancel-btn"
+      [disabled]="isCancelling || !canCancel"
+      (click)="cancelBooking()"
+    >
+      {{ isCancelling ? 'Cancelling...' : 'Cancel Booking' }}
+    </button>
+    <div class="cancel-info" *ngIf="!canCancel">
+      Bookings can only be cancelled at least 24 hours before departure
+    </div>
+  </div>
+
+  <div class="cancelled-message" *ngIf="isCancelled">
+    <p>Your booking has been successfully cancelled.</p>
+  </div>
+
+</section>

@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserStoreService } from '../../../services/user.store.service';
 @Component({
   selector: 'app-signup',
   imports: [FormsModule, CommonModule],
@@ -18,9 +19,9 @@ errorMessage = '';
 
 constructor(
   private authService: AuthService,
-  private router: Router
+  private router: Router,
+  private userStore:UserStoreService
 ) {}
-
 
 signup() {
   this.errorMessage = '';
@@ -31,6 +32,11 @@ signup() {
     password: this.password
   }).subscribe({
     next: () => {
+      this.userStore.setUser({
+        username: this.username,
+        email: this.email
+      });
+
       this.router.navigate(['/login']);
     },
     error: (err) => {
@@ -38,7 +44,4 @@ signup() {
     }
   });
 }
-
-  
-
 }

@@ -1,0 +1,160 @@
+.confirmation-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.page-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.ticket {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+.ticket-header {
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 6px 6px 0 0;
+}
+
+.ticket-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.ticket-body {
+  padding: 30px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.label {
+  font-weight: 600;
+  color: #666;
+}
+
+.value {
+  font-weight: 500;
+  color: #333;
+}
+
+.pnr {
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+}
+
+.status {
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+.status.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.divider {
+  height: 1px;
+  background: #ddd;
+  margin: 20px 0;
+}
+
+.section-title {
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.passenger-item {
+  padding: 10px;
+  background: #f8f9fa;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.contact-item {
+  padding: 8px 0;
+  color: #555;
+}
+
+.price-row {
+  margin-top: 10px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.action-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.cancel-btn {
+  padding: 12px 30px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.cancel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cancel-info {
+  padding: 10px 20px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  color: #856404;
+  font-size: 14px;
+}
+
+.cancelled-message {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cancelled-message p {
+  margin: 8px 0;
+  color: #555;
+}

@@ -1,0 +1,33 @@
+.booking-page{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    height:100%;
+    gap:20px;  
+    border:1px solid #ccc;
+    border-radius: 10px;
+    padding:20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.passenger-card{
+    display:flex;
+    flex-direction: row;
+    width:30%;
+    gap:10px;
+    border:1px solid #ccc;
+    border-radius: 10px;
+}
+
+.passenger-card button{
+    
+    height:40px;
+    width:100px;
+}
+
+.passenger-from{
+    display:flex;
+    flex-direction: column;
+    gap:5px;
+}
