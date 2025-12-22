@@ -65,6 +65,7 @@ export class SearchResults {
   onSelectFlight(flight:any){
 
     this.store.setSelectedFlight(flight);
+    console.log("flight object added to flightstore",flight)
     this.router.navigate(['/booking']);
   }
 

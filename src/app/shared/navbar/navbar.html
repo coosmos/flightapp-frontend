@@ -1,35 +1,30 @@
 <header class="navbar" [class.scrolled]="isScrolled">
   <div class="navbar-container">
     <div class="brand">
-     <a routerLink="/" class="brand">
-  <div class="logo-container">
-    <img src="/assets/logoplane.png" alt="SkyWings Logo" />
-  </div>
-  <span>SkyWings</span>
-    </a>
+      <a routerLink="/" class="brand">
+        <div class="logo-container">
+          <img src="/assets/logoplane.png" alt="SkyWings Logo" />
+        </div>
+        <span>SkyWings</span>
+      </a>
     </div>
 
     <nav class="nav-links" [class.open]="isMobileMenuOpen">
-      <a (click)="closeMobileMenu()">Flights</a>
-      <a (click)="closeMobileMenu()">Explore</a>
-      <a (click)="closeMobileMenu()">Bookings</a>
-
+      <a (click)="closeMobileMenu() " *ngIf="isAdmin()" routerLink="/add-flight"> Add Flights</a>
+      <a *ngIf="isLoggedIn()" (click)="closeMobileMenu()" routerLink="/booking-history"> Bookings </a>
       <ng-container *ngIf="!isLoggedIn(); else loggedIn">
-  <a routerLink="/login">Login</a>
-  <button class="signup-btn" routerLink="/signup">Sign up</button>
-</ng-container>
+        <a routerLink="/login">Login</a>
+        <button class="signup-btn" routerLink="/signup">Sign up</button>
+      </ng-container>
 
-<ng-template #loggedIn>
-  <span class="user">Hi, {{ getUsername() }}</span>
-  <button class="signup-btn" (click)="onLogout()">Logout</button>
-</ng-template>
+      <ng-template #loggedIn>
+        <span class="user">Hi, {{ getUsername() }}</span>
+        <button class="signup-btn" (click)="onLogout()">Logout</button>
+      </ng-template>
 
     </nav>
 
-    <div
-      class="menu-toggle"
-      [class.active]="isMobileMenuOpen"
-      (click)="toggleMobileMenu()">
+    <div class="menu-toggle" [class.active]="isMobileMenuOpen" (click)="toggleMobileMenu()">
       <span></span>
       <span></span>
       <span></span>

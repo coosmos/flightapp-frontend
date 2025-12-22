@@ -1,1 +1,74 @@
-<p>booking-history works!</p>
+<section class="booking-history">
+  <h2>Booking History</h2>
+
+  <p *ngIf="loading">Loading bookings...</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div *ngIf="!loading && bookings.length === 0" class="no-bookings">
+    No bookings found
+  </div>
+
+  <div class="booking-card" *ngFor="let booking of bookings">
+    <div class="booking-header">
+      <span class="pnr-badge">PNR: {{ booking.pnr }}</span>
+      <span class="status-badge" [class.cancelled]="booking.status === 'CANCELLED'">
+        {{ booking.status }}
+      </span>
+    </div>
+
+    <div class="booking-details">
+      <div class="row">
+        <span class="label">Flight</span>
+        <span>{{ booking.flightNumber }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Route</span>
+        <span>{{ booking.source }} → {{ booking.destination }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Departure</span>
+        <span>{{ booking.departureTime | date:'medium' }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Arrival</span>
+        <span>{{ booking.arrivalTime | date:'medium' }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Passengers</span>
+        <span class="passengers-list">
+          <ng-container *ngFor="let p of booking.passengers; let i = index">
+            {{ p.firstName }} {{ p.lastName }}
+            <span *ngIf="i < booking.passengers.length - 1">, </span>
+          </ng-container>
+        </span>
+      </div>
+
+      <div class="row">
+        <span class="label">Total Price</span>
+        <span class="price">${{ booking.totalPrice | number:'1.2-2' }}</span>
+      </div>
+
+      <div class="row">
+        <span class="label">Booked On</span>
+        <span>{{ booking.bookingDate | date:'medium' }}</span>
+      </div>
+    </div>
+
+    <div class="booking-actions">
+      <button 
+        *ngIf="canCancelBooking(booking)"
+        (click)="cancelBooking(booking.pnr)"
+        [disabled]="isCancelling(booking.pnr)"
+        class="cancel-btn">
+        {{ isCancelling(booking.pnr) ? 'Cancelling...' : 'Cancel Booking' }}
+      </button>
+      <span *ngIf="booking.status === 'CANCELLED'" class="cancelled-text">
+        This booking has been cancelled
+      </span>
+    </div>
+  </div>
+</section>

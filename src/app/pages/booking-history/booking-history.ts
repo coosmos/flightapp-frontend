@@ -11,33 +11,95 @@ import { UserStoreService } from '../../services/user.store.service';
 })
 export class BookingHistory {
 
-  bookings:any[]=[];
-  loading=true;
-  errorMessage='';
+  bookings: any[] = [];
+  loading = true;
+  errorMessage = '';
+  cancellingPnr: string | null = null;
 
   constructor(
-    private bookingService:BookingService,
-    private userStore:UserStoreService
-  ){}
+    private bookingService: BookingService,
+    private userStore: UserStoreService
+  ) {}
 
-  ngOnInit(){
-    const email=this.userStore.getEmail();
+  ngOnInit() {
+    this.loadBookingHistory();
+  }
+   getStatusPriority(status: string): number {
+  switch (status) {
+    case 'ACTIVE':
+    case 'CONFIRMED':
+      return 1;
+    case 'COMPLETED':
+      return 2;
+    case 'CANCELLED':
+      return 3;
+    default:
+      return 99;
+  }
+}
+ sortBookings() {
+  this.bookings.sort(
+    (a, b) =>
+      this.getStatusPriority(a.status) -
+      this.getStatusPriority(b.status)
+  );
+}
+
+
+  loadBookingHistory() {
+    const email = this.userStore.getEmail();
     if (!email) {
       this.errorMessage = 'Please login to view booking history';
       this.loading = false;
       return;
     }
+
     this.bookingService.getBookingHistory(email).subscribe({
-      next:(response)=>{
-        this.bookings=response;
-        this.loading=false;
+      next: (response) => {
+        this.bookings = response;
+        this.sortBookings();
+        this.loading = false;
+        console.log("bookinghistory",response)
       },
-      error:(error)=>{
+      error: (error) => {
         console.error(error);
-        this.errorMessage='Failed to load booking history';
-        this.loading=false;
+        this.errorMessage = 'Failed to load booking history';
+        this.loading = false;
       }
     });
+  }
 
+  cancelBooking(pnr: string) {
+    if (!confirm('Are you sure you want to cancel this booking?')) {
+      return;
+    }
+
+    this.cancellingPnr = pnr;
+
+    this.bookingService.cancelBooking(pnr).subscribe({
+      next: (response) => {
+        console.log('Booking cancelled successfully', response);
+        const booking = this.bookings.find(b => b.pnr === pnr);
+        if (booking) {
+          booking.status = 'CANCELLED';
+        }
+        
+        this.cancellingPnr = null;
+        alert('Booking cancelled successfully');
+      },
+      error: (error) => {
+        console.error('Failed to cancel booking', error);
+        this.cancellingPnr = null;
+        alert('Failed to cancel booking. Please try again.');
+      }
+    });
+  }
+
+  canCancelBooking(booking: any): boolean {
+    return booking.status !== 'CANCELLED' && booking.status !== 'COMPLETED';
+  }
+
+  isCancelling(pnr: string): boolean {
+    return this.cancellingPnr === pnr;
   }
 }

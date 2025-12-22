@@ -1,0 +1,162 @@
+<section class="add-flight-page">
+  <h2>Add New Flight</h2>
+
+  <!-- Success/Error Messages -->
+  <div class="message success-message" *ngIf="success">
+    {{ success }}
+  </div>
+  <div class="message error-message" *ngIf="error">
+    {{ error }}
+  </div>
+
+  <div class="form-container">
+    <div class="form-grid">
+      <!-- Flight Number -->
+      <div class="field">
+        <label>Flight Number <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.flightNumber" 
+          type="text"
+          placeholder="e.g., AI-367"
+          (blur)="validateFlightNumber()"
+          [class.error]="validationErrors.flightNumber">
+        <span class="error-text" *ngIf="validationErrors.flightNumber">
+          {{ validationErrors.flightNumber }}
+        </span>
+      </div>
+
+      <!-- Airline Name -->
+      <div class="field">
+        <label>Airline Name <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.airline" 
+          type="text"
+          placeholder="e.g., Air India"
+          (blur)="validateAirline()"
+          [class.error]="validationErrors.airline">
+        <span class="error-text" *ngIf="validationErrors.airline">
+          {{ validationErrors.airline }}
+        </span>
+      </div>
+
+      <!-- Source (Airport Code) -->
+      <div class="field">
+        <label>Source (Airport Code) <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.source" 
+          type="text"
+          placeholder="Enter source code"
+          maxlength="3"
+          (input)="flight.source = flight.source.toUpperCase()"
+          (blur)="validateSource()"
+          [class.error]="validationErrors.source">
+        <span class="error-text" *ngIf="validationErrors.source">
+          {{ validationErrors.source }}
+        </span>
+      </div>
+
+      <!-- Destination (Airport Code) -->
+      <div class="field">
+        <label>Destination (Airport Code) <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.destination" 
+          type="text"
+          placeholder="Enter destination code"
+          maxlength="3"
+          (input)="flight.destination = flight.destination.toUpperCase()"
+          (blur)="validateDestination()"
+          [class.error]="validationErrors.destination">
+        <span class="error-text" *ngIf="validationErrors.destination">
+          {{ validationErrors.destination }}
+        </span>
+      </div>
+
+      <!-- Departure Time -->
+      <div class="field">
+        <label>Departure Time <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.departureTime" 
+          type="datetime-local"
+          [min]="minDateTime"
+          (blur)="validateDepartureTime()"
+          [class.error]="validationErrors.departureTime">
+        <span class="error-text" *ngIf="validationErrors.departureTime">
+          {{ validationErrors.departureTime }}
+        </span>
+      </div>
+
+      <!-- Arrival Time -->
+      <div class="field">
+        <label>Arrival Time <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.arrivalTime" 
+          type="datetime-local"
+          [min]="minDateTime"
+          (blur)="validateArrivalTime()"
+          [class.error]="validationErrors.arrivalTime">
+        <span class="error-text" *ngIf="validationErrors.arrivalTime">
+          {{ validationErrors.arrivalTime }}
+        </span>
+      </div>
+
+      <!-- Price (₹) -->
+      <div class="field">
+        <label>Price (₹) <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.price" 
+          type="number"
+          placeholder="Enter price amount"
+          step="0.01"
+          min="0"
+          (blur)="validatePrice()"
+          [class.error]="validationErrors.price">
+        <span class="error-text" *ngIf="validationErrors.price">
+          {{ validationErrors.price }}
+        </span>
+      </div>
+
+      <!-- Total Seats -->
+      <div class="field">
+        <label>Total Seats <span class="required">*</span></label>
+        <input 
+          [(ngModel)]="flight.totalSeats" 
+          type="number"
+          placeholder="Enter total seats"
+          min="1"
+          (blur)="validateTotalSeats()"
+          [class.error]="validationErrors.totalSeats">
+        <span class="error-text" *ngIf="validationErrors.totalSeats">
+          {{ validationErrors.totalSeats }}
+        </span>
+      </div>
+    </div>
+
+    <!-- Validation Rules Info -->
+    <div class="validation-info">
+      <h4>Validation Rules:</h4>
+      <p>Flight number must follow format: 2 uppercase letters + hyphen + 3-4 digits</p>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="button-group">
+      <button 
+        (click)="addFlight()" 
+        [disabled]="loading"
+        class="submit-btn">
+        {{ loading ? 'Submitting...' : 'Submit Flight' }}
+      </button>
+      <button 
+        (click)="clearForm()"
+        [disabled]="loading"
+        class="clear-btn">
+        Clear Form
+      </button>
+      <button 
+        (click)="cancel()"
+        [disabled]="loading"
+        class="cancel-btn">
+        Cancel
+      </button>
+    </div>
+  </div>
+</section>

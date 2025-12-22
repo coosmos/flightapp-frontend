@@ -1,0 +1,133 @@
+.booking-history {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 12px;
+  background: #fff5f5;
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.no-bookings {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+  font-size: 16px;
+}
+
+.booking-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.pnr-badge {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  background: #e8f5e9;
+  color: #2e7d32;
+  text-transform: uppercase;
+}
+
+.status-badge.cancelled {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.booking-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.label {
+  font-weight: 500;
+  color: #666;
+  min-width: 120px;
+}
+
+.passengers-list {
+  text-align: right;
+  max-width: 60%;
+}
+
+.price {
+  font-weight: 600;
+  color: #2e7d32;
+  font-size: 16px;
+}
+
+.booking-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  background: white;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover:not(:disabled) {
+  background: #e74c3c;
+  color: white;
+}
+
+.cancel-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.cancelled-text {
+  color: #c62828;
+  font-style: italic;
+  font-size: 14px;
+}

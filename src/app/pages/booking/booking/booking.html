@@ -5,15 +5,36 @@
         <div class="passenger-form">
             <div class="field">
                 <label>First Name</label>
-                <input [(ngModel)]="passenger.firstName" type="text">
+                <input 
+                    [(ngModel)]="passenger.firstName" 
+                    type="text"
+                    (blur)="validatePassenger(i)"
+                    [class.error]="passengerErrors[i]?.firstName">
+                <span class="error-message" *ngIf="passengerErrors[i]?.firstName">
+                    {{passengerErrors[i].firstName}}
+                </span>
             </div>
             <div class="field">
                 <label>Last Name</label>
-                <input [(ngModel)]="passenger.lastName" type="text">
+                <input 
+                    [(ngModel)]="passenger.lastName" 
+                    type="text"
+                    (blur)="validatePassenger(i)"
+                    [class.error]="passengerErrors[i]?.lastName">
+                <span class="error-message" *ngIf="passengerErrors[i]?.lastName">
+                    {{passengerErrors[i].lastName}}
+                </span>
             </div>
             <div class="field">
                 <label>Age</label>
-                <input [(ngModel)]="passenger.age" type="number">
+                <input 
+                    [(ngModel)]="passenger.age" 
+                    type="number"
+                    (blur)="validatePassenger(i)"
+                    [class.error]="passengerErrors[i]?.age">
+                <span class="error-message" *ngIf="passengerErrors[i]?.age">
+                    {{passengerErrors[i].age}}
+                </span>
             </div>
             <div class="field">
                 <label>Gender</label>
@@ -23,24 +44,50 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-
         </div>
-        <button *ngIf="bookingObject.passengers.length >1 " (click)="removePassenger(i)"  >remove </button>
+        <button 
+            *ngIf="bookingObject.passengers.length > 1" 
+            (click)="removePassenger(i)" 
+            class="remove-btn">
+            Remove
+        </button>
     </div>
-    <button *ngIf="bookingObject.passengers.length<6" (click)="addPassenger()">Add Passenger </button>
+    
+    <button 
+        *ngIf="bookingObject.passengers.length < 6" 
+        (click)="addPassenger()" 
+        class="add-btn">
+        + Add Passenger
+    </button>
 
-    <div class="field">
-        <label>ContactEmail</label>
-        <input [(ngModel)]="bookingObject.contactEmail" type="email">
+    <div class="contact-section">
+        <div class="field">
+            <label>Contact Email</label>
+            <input 
+                [(ngModel)]="bookingObject.contactEmail" 
+                type="email"
+                (blur)="validateEmail()"
+                [class.error]="emailError"
+                placeholder="email@example.com">
+            <span class="error-message" *ngIf="emailError">
+                {{emailError}}
+            </span>
+        </div>
+
+        <div class="field">
+            <label>Contact Phone</label>
+            <input 
+                [(ngModel)]="bookingObject.contactPhone" 
+                type="tel"
+                (blur)="validatePhone()"
+                [class.error]="phoneError"
+                placeholder="10-digit number"
+                maxlength="10">
+            <span class="error-message" *ngIf="phoneError">
+                {{phoneError}}
+            </span>
+        </div>
     </div>
 
-    <div class="field">
-        <label>ContactPhone</label>
-        <input [(ngModel)]="bookingObject.contactPhone" type="tel">
-    </div>
-
-    <button (click)="confirmBooking()">Confirm Booking</button>
-
-
-
+    <button (click)="confirmBooking()" class="confirm-btn">Confirm Booking</button>
 </section>

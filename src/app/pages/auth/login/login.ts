@@ -13,6 +13,7 @@ import { UserStoreService } from '../../../services/user.store.service';
 export class Login {
   username = '';
   password = '';
+  role='';
 
 
   constructor(private authService: AuthService,private router:Router,private userStore:UserStoreService) { }
@@ -25,7 +26,7 @@ export class Login {
   }).subscribe({
     next: (response) => {
       localStorage.setItem('token', response.token);
-
+      localStorage.setItem('username',response.username);
       this.userStore.setUser({
         username: response.username,
         email: response.email
