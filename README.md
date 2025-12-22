@@ -25,11 +25,15 @@ https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
 ## Bookings page loading active bookings first 
 <img width="1908" height="994" alt="image" src="https://github.com/user-attachments/assets/45c4acbe-af48-46dc-875b-8bd2f1bc724a" />
 
+## Profiles 
+<img width="1903" height="832" alt="image" src="https://github.com/user-attachments/assets/bc005e55-4b20-4da2-be12-a732e587ac09" />
 
 
 ## Login Screen
 <img width="1911" height="853" alt="image" src="https://github.com/user-attachments/assets/d6cbdf38-161c-423b-aa65-592455e5d480" />
 
+## change Password
+<img width="1908" height="900" alt="image" src="https://github.com/user-attachments/assets/41e1480f-694e-433a-b8fa-b845586901ba" />
 
 ---
 
