@@ -13,11 +13,17 @@ https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
 ## Home
 <img width="1899" height="936" alt="image" src="https://github.com/user-attachments/assets/717cc52f-18c0-440c-a5cc-a004b76d2d2e" />
 
-##FlightSearch Results
+## FlightSearch Results
 <img width="1916" height="935" alt="image" src="https://github.com/user-attachments/assets/0462774b-047a-40ca-a68b-b6b1d2ee8bca" />
 
 ---
 <img width="1913" height="1003" alt="image" src="https://github.com/user-attachments/assets/3af6f021-a832-47f3-b272-b2915307641b" />
+
+## AddFlight form for admin
+<img width="1911" height="978" alt="image" src="https://github.com/user-attachments/assets/d046385b-3110-47b8-9231-df41c9968578" />
+
+## Bookings page loading active bookings first 
+<img width="1908" height="994" alt="image" src="https://github.com/user-attachments/assets/45c4acbe-af48-46dc-875b-8bd2f1bc724a" />
 
 
 
