@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BookingService } from '../../services/booking.service';
-import { UserStoreService } from '../../services/user.store.service';
+import { BookingService } from '../../../services/booking.service';
+import { UserStoreService } from '../../../services/user.store.service';
 
 @Component({
   selector: 'app-booking-history',

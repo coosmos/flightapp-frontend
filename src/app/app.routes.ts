@@ -4,9 +4,9 @@ import { Login } from './pages/auth/login/login';
 import { Signup } from './pages/auth/signup/signup';
 import { authGuard } from './shared/guards/auth.guard';
 import { SearchResults } from './pages/search-results/search-results';
-import { BookingComponent } from './pages/booking/booking/booking';
-import { BookingConfirmation } from './pages/booking-confirmation/booking-confirmation';
-import { BookingHistory } from './pages/booking-history/booking-history';
+import { BookingComponent } from './pages/booking/bookingForm/booking';
+import { BookingConfirmation } from './pages/booking/booking-confirmation/booking-confirmation';
+import { BookingHistory } from './pages/booking/booking-history/booking-history';
 import { AddFlight } from './pages/add-flight/add-flight';
 import { adminGuard } from './shared/guards/admin.guard';
 import { Profile } from './pages/profile/profile';
@@ -25,5 +25,5 @@ export const routes: Routes = [
   { path: 'add-flight', component: AddFlight, canActivate: [adminGuard, authGuard] },
   { path: 'profile', component: Profile },
   { path: 'change-password', component: ChangePassword },
-  {path:'booking/seats-selection',component:SeatSelection}
+  { path: 'booking/seats-selection', component: SeatSelection }
 ];

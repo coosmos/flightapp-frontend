@@ -73,38 +73,86 @@ export class SeatSelection implements OnInit {
     console.log(this.activePassengerIndex);
   }
 
-  onSeatClick(seat: Seat) {
-    /* 
-      TODO: Implement logic:
-      1. Check if seat is occupied
-      2. Check if seat is taken by another passenger
-      3. Assign seat to current passenger OR unassign if already selected
-      4. Auto-advance to next passenger
-    */
+  onSeatClick(seat: Seat) {  
+    for(let [idx,selectedSeat] of this.selectedSeatsMap){
+      //iterating the map
+      if(selectedSeat.id===seat.id && idx !== this.activePassengerIndex){
+        alert('this seat is already taken --will disable alertslater')  // -- TODO disable alerts to popup
+        return ;
+      }
+    }
+    // togglw seat for active passenger
+    if(this.selectedSeatsMap.get(this.activePassengerIndex)?.id===seat.id){
+       this.selectedSeatsMap.delete(this.activePassengerIndex);
+    }else{
+      this.selectedSeatsMap.set(this.activePassengerIndex,seat);
+    }
+     if (this.activePassengerIndex < this.passengers.length - 1) {
+        this.activePassengerIndex++;
+      }
   }
 
   isSeatSelected(seatId: string): boolean {
-    // TODO: Return true if seat is in the selected map
-    return false;
+    return Array.from(this.selectedSeatsMap.values()).some(s => s.id === seatId);
   }
 
   isSeatSelectedByActive(seatId: string): boolean {
-    // TODO: Return true if seat belongs to currently active passenger
-    return false;
+    return this.selectedSeatsMap.get(this.activePassengerIndex)?.id === seatId;
   }
-
   getSeatForPassenger(index: number): string {
-    return this.selectedSeatsMap.get(index)?.id || 'Not selected';
+    return this.selectedSeatsMap.get(index)?.id || 'Not Selected';
   }
-
   confirmSelection() {
-    /*
-      TODO: Finalize Booking
-      1. Validate all passengers have seats
-      2. Check user login
-      3. Build API payload (flight + passengers w/ seat info)
-      4. Call createBooking API
-      5. Navigate to confirmation
-    */
+    if (this.selectedSeatsMap.size < this.passengers.length) {
+      alert('Please select seats for all passengers.');
+      return;
+    }
+    const ownerEmail = this.userStore.getEmail();
+    if (!ownerEmail) {
+      alert('Please log in to continue');
+      return;
+    }
+    // update passengers arrays with seat assignments
+    const passengersWithSeats = this.passengers.map((p, index) => {
+      const seat = this.selectedSeatsMap.get(index);
+      return {
+        ...p,
+        seatNumber: seat?.id
+      };
+    });
+    const flight = this.bookingData.flight;
+    // Construct Payload
+    const payload = {
+      flightNumber: flight.flightNumber,
+      ticketPrice: flight.price, 
+      airline: flight.airline,
+      source: flight.source,
+      destination: flight.destination,
+      departureTime: flight.departureTime,
+      arrivalTime: flight.arrivalTime,
+      passengers: passengersWithSeats,
+      contactEmail: this.bookingData.contactEmail,
+      contactPhone: this.bookingData.contactPhone,
+      bookingOwnerEmail: ownerEmail
+    };
+    console.log('Sending booking payload:', payload);
+    this.bookingService.createBooking(payload).subscribe({
+      next: (response) => {
+        const bookingForUI = {
+          ...response,
+          departureTime: flight.departureTime, 
+          arrivalTime: flight.arrivalTime,
+          source: flight.source,
+          destination: flight.destination
+        };
+
+        this.bookingStore.setBooking(bookingForUI);
+        this.router.navigate(['/booking-state']);
+      },
+      error: (err) => {
+        console.error('Booking failed', err);
+        alert('Booking failed. Please try again.');
+      }
+    });
   }
 }

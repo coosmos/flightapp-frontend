@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { BookingStoreService } from '../../services/booking-store.service';
-import { BookingService } from '../../services/booking.service';
+import { BookingStoreService } from '../../../services/booking-store.service';
+import { BookingService } from '../../../services/booking.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -19,7 +19,7 @@ export class BookingConfirmation {
   constructor(
     private bookingStore: BookingStoreService,
     private bookingService: BookingService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.booking = this.bookingStore.getBooking();
@@ -29,15 +29,15 @@ export class BookingConfirmation {
     return this.booking?.status === 'CANCELLED';
   }
 
- get canCancel(): boolean {
-  if (!this.booking || this.isCancelled) return false;
-  if (!this.booking.departureTime) return false;
-  const departureDate = new Date(this.booking.departureTime);
-  const now = new Date();
-  const hoursDiff =
-    (departureDate.getTime() - now.getTime()) / (1000 * 60 * 60);
-  return hoursDiff >= 24;
-}
+  get canCancel(): boolean {
+    if (!this.booking || this.isCancelled) return false;
+    if (!this.booking.departureTime) return false;
+    const departureDate = new Date(this.booking.departureTime);
+    const now = new Date();
+    const hoursDiff =
+      (departureDate.getTime() - now.getTime()) / (1000 * 60 * 60);
+    return hoursDiff >= 24;
+  }
 
   cancelBooking() {
     if (!this.booking || !this.canCancel) return;
