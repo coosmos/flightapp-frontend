@@ -11,6 +11,7 @@ import { AddFlight } from './pages/add-flight/add-flight';
 import { adminGuard } from './shared/guards/admin.guard';
 import { Profile } from './pages/profile/profile';
 import { ChangePassword } from './pages/auth/change-password/change-password';
+import { SeatSelection } from './pages/booking/seat-selection/seat-selection';
 
 export const routes: Routes = [
 
@@ -23,5 +24,6 @@ export const routes: Routes = [
   { path: 'booking-history', component: BookingHistory },
   { path: 'add-flight', component: AddFlight, canActivate: [adminGuard, authGuard] },
   { path: 'profile', component: Profile },
-  { path: 'change-password', component: ChangePassword }
+  { path: 'change-password', component: ChangePassword },
+  {path:'booking/seats-selection',component:SeatSelection}
 ];

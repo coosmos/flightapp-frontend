@@ -149,56 +149,77 @@ export class BookingComponent {
     }
     return allValid;
   }
+  goToSeatSelection() {
+  const isEmailValid = this.validateEmail();
+  const isPhoneValid = this.validatePhone();
+  const arePassengersValid = this.validateAllPassengers();
 
-  confirmBooking() {
-    const ownerEmail = this.userStore.getEmail();
-    if (!ownerEmail) {
-      console.error('User not logged in');
-      alert('Please log in to continue');
-      return;
-    }
-    const isEmailValid = this.validateEmail();
-    const isPhoneValid = this.validatePhone();
-    const arePassengersValid = this.validateAllPassengers();
-
-    if (!isEmailValid || !isPhoneValid || !arePassengersValid) {
-      alert('Please fix all validation errors before confirming booking');
-      return;
-    }
-
-    const payload = {
-      flightNumber: this.selectedFlight.flightNumber,
-      ticketPrice: this.selectedFlight.price,
-      airline: this.selectedFlight.airline,
-      source: this.selectedFlight.source,
-      destination: this.selectedFlight.destination,
-      departureTime: this.selectedFlight.departureTime,
-      arrivalTime: this.selectedFlight.arrivalTime,
-      passengers: this.bookingObject.passengers,
-      contactEmail: this.bookingObject.contactEmail,
-      contactPhone: this.bookingObject.contactPhone,
-      bookingOwnerEmail: ownerEmail
-    };
-
-    console.log('booking payload', payload);
-    
-    this.bookingService.createBooking(payload).subscribe({
-      next: (response) => {
-        const bookingForUI = {
-          ...response,
-          departureTime: this.selectedFlight.departureTime,
-          arrivalTime: this.selectedFlight.arrivalTime,
-          source: this.selectedFlight.source,
-          destination: this.selectedFlight.destination
-        };
-
-        this.bookingStore.setBooking(bookingForUI);
-        this.router.navigate(['/booking-state']);
-      },
-      error: (err) => {
-        console.log('booking error', err);
-        alert('Booking failed. Please try again.');
-      }
-    });
+  if (!isEmailValid || !isPhoneValid || !arePassengersValid) {
+    alert('Please fix all validation errors before continuing');
+    return;
   }
+
+  const bookingDraft = {
+    passengers: this.bookingObject.passengers,
+    contactEmail: this.bookingObject.contactEmail,
+    contactPhone: this.bookingObject.contactPhone,
+    flight: this.selectedFlight
+  };
+
+  this.bookingStore.setBooking(bookingDraft);
+  this.router.navigate(['/booking/seats-selection']);
+}
+
+
+  // confirmBooking() {
+  //   const ownerEmail = this.userStore.getEmail();
+  //   if (!ownerEmail) {
+  //     console.error('User not logged in');
+  //     alert('Please log in to continue');
+  //     return;
+  //   }
+  //   const isEmailValid = this.validateEmail();
+  //   const isPhoneValid = this.validatePhone();
+  //   const arePassengersValid = this.validateAllPassengers();
+
+  //   if (!isEmailValid || !isPhoneValid || !arePassengersValid) {
+  //     alert('Please fix all validation errors before confirming booking');
+  //     return;
+  //   }
+
+  //   const payload = {
+  //     flightNumber: this.selectedFlight.flightNumber,
+  //     ticketPrice: this.selectedFlight.price,
+  //     airline: this.selectedFlight.airline,
+  //     source: this.selectedFlight.source,
+  //     destination: this.selectedFlight.destination,
+  //     departureTime: this.selectedFlight.departureTime,
+  //     arrivalTime: this.selectedFlight.arrivalTime,
+  //     passengers: this.bookingObject.passengers,
+  //     contactEmail: this.bookingObject.contactEmail,
+  //     contactPhone: this.bookingObject.contactPhone,
+  //     bookingOwnerEmail: ownerEmail
+  //   };
+
+  //   console.log('booking payload', payload);
+    
+  //   this.bookingService.createBooking(payload).subscribe({
+  //     next: (response) => {
+  //       const bookingForUI = {
+  //         ...response,
+  //         departureTime: this.selectedFlight.departureTime,
+  //         arrivalTime: this.selectedFlight.arrivalTime,
+  //         source: this.selectedFlight.source,
+  //         destination: this.selectedFlight.destination
+  //       };
+
+  //       this.bookingStore.setBooking(bookingForUI);
+  //       this.router.navigate(['/booking-state']);
+  //     },
+  //     error: (err) => {
+  //       console.log('booking error', err);
+  //       alert('Booking failed. Please try again.');
+  //     }
+  //   });
+  // }
 }

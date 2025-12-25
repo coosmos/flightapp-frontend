@@ -1,0 +1,62 @@
+<div class="seat-selection-container">
+  <!-- Passenger Selection -->
+  <div class="passenger-list card">
+    <h3>Travelers</h3>
+    <p class="subtitle">Select a passenger to assign a seat</p>
+    
+    <div *ngFor="let p of passengers; let i = index" 
+         class="passenger-row" 
+         [class.active]="activePassengerIndex === i"
+         (click)="selectPassenger(i)">
+      <div class="passenger-info">
+        <div class="avatar">{{ p.firstName[0] }}</div>
+        <div>
+          <span class="name">{{ p.firstName }} {{ p.lastName }}</span>
+        </div>
+      </div>
+      <div class="assigned-seat" [class.assigned]="selectedSeatsMap.has(i)">
+        {{ getSeatForPassenger(i) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="main-layout">
+    <!-- Seat Map -->
+    <div class="seat-map-container card">
+      <div class="legend">
+        <span class="item"><span class="box available"></span> Available</span>
+        <span class="item"><span class="box selected"></span> Selected</span>
+      </div>
+
+      <div class="plane-body">
+        <div class="column-labels">
+          <span>A</span><span>B</span><span>C</span>
+          <span class="aisle-spacer"></span>
+          <span>D</span><span>E</span><span>F</span>
+        </div>
+
+        <div *ngFor="let row of seatMap" class="seat-row-grid">
+          <div class="row-number">{{ row.rowNumber }}</div>
+          
+          <ng-container *ngFor="let seat of row.seats; let j = index">
+            <div *ngIf="j === 3" class="aisle-spacer"></div>
+            
+            <button class="seat"
+              [class.selected]="isSeatSelected(seat.id)"
+              [class.active-selection]="isSeatSelectedByActive(seat.id)"
+              (click)="onSeatClick(seat)">
+              <span class="seat-label">{{ seat.id }}</span>
+            </button>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Button -->
+    <div class="confirmation-panel card">
+      <button class="btn-confirm" (click)="confirmSelection()">
+        Confirm Selection ({{ selectedSeatsMap.size }}/{{ passengers.length }})
+      </button>
+    </div>
+  </div>
+</div>
