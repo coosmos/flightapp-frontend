@@ -5,7 +5,6 @@
   --text-main: #1a1a1a;
   --selected: #10b981;
 }
-
 .seat-selection-container {
   display: flex;
   flex-direction: column;
@@ -16,30 +15,24 @@
   font-family: 'Inter', sans-serif;
   margin-top: 100px;
 }
-
 .card {
   background: white;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
-
-/* Passenger List */
 .passenger-list {
   margin-bottom: 10px;
 }
-
 .passenger-list h3 {
   margin: 0 0 8px 0;
   color: var(--text-main);
 }
-
 .subtitle {
   margin: 0 0 16px 0;
   color: #64748b;
   font-size: 0.9rem;
 }
-
 .passenger-row {
   display: flex;
   justify-content: space-between;
@@ -52,22 +45,18 @@
   background: #f8fafc;
   transition: all 0.2s;
 }
-
 .passenger-row:hover {
   background: #f1f5f9;
 }
-
 .passenger-row.active {
   border-color: var(--primary);
   background: #f0f7ff;
 }
-
 .passenger-info {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
 .avatar {
   width: 32px;
   height: 32px;
@@ -80,12 +69,10 @@
   font-weight: bold;
   font-size: 0.9rem;
 }
-
 .name {
   font-weight: 500;
   color: var(--text-main);
 }
-
 .assigned-seat {
   padding: 4px 12px;
   background: #eee;
@@ -99,24 +86,18 @@
   color: #065f46;
   font-weight: bold;
 }
-
-/* Main Layout */
 .main-layout {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
-
-/* Seat Map */
 .seat-map-container {
   padding: 30px;
 }
-
 .plane-body {
   margin: 0 auto;
   max-width: 500px;
 }
-
 .column-labels {
   display: grid;
   grid-template-columns: 30px repeat(3, 1fr) 40px repeat(3, 1fr);
@@ -128,7 +109,6 @@
   font-size: 0.85rem;
   color: #64748b;
 }
-
 .seat-row-grid {
   display: grid;
   grid-template-columns: 30px repeat(3, 1fr) 40px repeat(3, 1fr);
@@ -137,18 +117,14 @@
   margin-bottom: 10px;
   text-align: center;
 }
-
 .row-number {
   font-weight: 600;
   font-size: 0.85rem;
   color: #64748b;
 }
-
 .aisle-spacer {
   width: 40px;
 }
-
-/* Seats */
 .seat {
   aspect-ratio: 1/1;
   border: 2px solid #cbd5e1;
@@ -185,8 +161,6 @@
   font-size: 0.75rem;
   font-weight: 600;
 }
-
-/* Legend */
 .legend {
   display: flex;
   gap: 20px;
@@ -218,8 +192,6 @@
   background: var(--selected);
   border-color: var(--selected);
 }
-
-/* Confirmation Panel */
 .confirmation-panel {
   text-align: center;
 }
@@ -247,7 +219,6 @@
   transform: translateY(0);
 }
 
-/* Responsive */
 @media (min-width: 1024px) {
   .seat-selection-container {
     flex-direction: row;
