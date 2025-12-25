@@ -25,6 +25,9 @@ https://github.com/user-attachments/assets/0d9c7962-beaf-492b-b399-cd90fadbd7b4
 ## Bookings page loading active bookings first 
 <img width="1908" height="994" alt="image" src="https://github.com/user-attachments/assets/45c4acbe-af48-46dc-875b-8bd2f1bc724a" />
 
+## Seat-selection Page
+<img width="1905" height="985" alt="image" src="https://github.com/user-attachments/assets/c37b9c31-d7b3-42b6-8d4e-b91d3fc9bacc" />
+
 ## Profiles 
 <img width="1903" height="832" alt="image" src="https://github.com/user-attachments/assets/bc005e55-4b20-4da2-be12-a732e587ac09" />
 
