@@ -1,7 +1,5 @@
 <section class="add-flight-page">
   <h2>Add New Flight</h2>
-
-  <!-- Success/Error Messages -->
   <div class="message success-message" *ngIf="success">
     {{ success }}
   </div>
@@ -11,7 +9,6 @@
 
   <div class="form-container">
     <div class="form-grid">
-      <!-- Flight Number -->
       <div class="field">
         <label>Flight Number <span class="required">*</span></label>
         <input 
@@ -24,8 +21,6 @@
           {{ validationErrors.flightNumber }}
         </span>
       </div>
-
-      <!-- Airline Name -->
       <div class="field">
         <label>Airline Name <span class="required">*</span></label>
         <input 
@@ -38,8 +33,6 @@
           {{ validationErrors.airline }}
         </span>
       </div>
-
-      <!-- Source (Airport Code) -->
       <div class="field">
         <label>Source (Airport Code) <span class="required">*</span></label>
         <input 
@@ -54,8 +47,6 @@
           {{ validationErrors.source }}
         </span>
       </div>
-
-      <!-- Destination (Airport Code) -->
       <div class="field">
         <label>Destination (Airport Code) <span class="required">*</span></label>
         <input 
@@ -70,8 +61,6 @@
           {{ validationErrors.destination }}
         </span>
       </div>
-
-      <!-- Departure Time -->
       <div class="field">
         <label>Departure Time <span class="required">*</span></label>
         <input 
@@ -84,8 +73,6 @@
           {{ validationErrors.departureTime }}
         </span>
       </div>
-
-      <!-- Arrival Time -->
       <div class="field">
         <label>Arrival Time <span class="required">*</span></label>
         <input 
@@ -98,8 +85,6 @@
           {{ validationErrors.arrivalTime }}
         </span>
       </div>
-
-      <!-- Price (₹) -->
       <div class="field">
         <label>Price (₹) <span class="required">*</span></label>
         <input 
@@ -114,8 +99,6 @@
           {{ validationErrors.price }}
         </span>
       </div>
-
-      <!-- Total Seats -->
       <div class="field">
         <label>Total Seats <span class="required">*</span></label>
         <input 
@@ -130,14 +113,10 @@
         </span>
       </div>
     </div>
-
-    <!-- Validation Rules Info -->
     <div class="validation-info">
       <h4>Validation Rules:</h4>
       <p>Flight number must follow format: 2 uppercase letters + hyphen + 3-4 digits</p>
     </div>
-
-    <!-- Action Buttons -->
     <div class="button-group">
       <button 
         (click)="addFlight()" 

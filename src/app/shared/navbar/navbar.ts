@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { isLoggedIn, getUsername, logout ,isAdmin } from '../utils/auth.util';
-
+import { UserStoreService } from '../../services/user.store.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -17,7 +17,7 @@ export class Navbar{
 getUsername = getUsername;
 isAdmin=isAdmin;
 
-constructor(private router: Router){}
+constructor(private router: Router,private userStore: UserStoreService){}
   @HostListener('window:scroll')
   onWindowScroll() {
     this.isScrolled = window.scrollY > 50;

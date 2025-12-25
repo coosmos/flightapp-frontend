@@ -1,36 +1,62 @@
 <section class="signup">
-<div class="signup-overlay">
-<div class="auth-page">
-  <div class="auth-card">
-    <h2>Create account</h2>
-    <p class="subtitle">Join SkyWings to book flights</p>
+  <div class="signup-overlay">
+    <div class="auth-page">
+      <div class="auth-card">
+        <h2>Create account</h2>
+        <p class="subtitle">Join SkyWings to book flights</p>
 
-    <div class="field">
-      <label>Username</label>
-      <input [(ngModel)]="username" placeholder="Choose a username" />
+        <div class="field">
+          <label>Username</label>
+          <input
+            [(ngModel)]="username"
+            placeholder="Choose a username"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label>Email</label>
+          <input
+            type="email"
+            [(ngModel)]="email"
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label>Password</label>
+          <input
+            type="password"
+            [(ngModel)]="password"
+            placeholder="Create a password"
+            required
+          />
+          <small class="hint">
+            At least 6 characters and 1 number
+          </small>
+          <small class="error"
+            *ngIf="password && !isPasswordValid()">
+            Password must contain at least 6 characters and one number
+          </small>
+        </div>
+        <div class="error" *ngIf="errorMessage">
+          {{ errorMessage }}
+        </div>
+
+        <button
+          class="auth-btn"
+          (click)="signup()"
+          [disabled]="!isFormValid()"
+        >
+          Sign up
+        </button>
+
+        <p class="switch">
+          Already have an account?
+          <a routerLink="/login">Login</a>
+        </p>
+      </div>
     </div>
-
-    <div class="field">
-      <label>Email</label>
-      <input [(ngModel)]="email" placeholder="Enter your email" />
-    </div>
-
-    <div class="field">
-      <label>Password</label>
-      <input type="password" [(ngModel)]="password" placeholder="Create a password" />
-    </div>
-
-    <div class="error" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
-
-    <button class="auth-btn" (click)="signup()">Sign up</button>
-
-    <p class="switch">
-      Already have an account?
-      <a routerLink="/login">Login</a>
-    </p>
   </div>
-</div>
-</div>
 </section>

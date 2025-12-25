@@ -1,0 +1,122 @@
+<section class="profile-page">
+  <div class="profile-container">
+    <div class="message success-message" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    <div class="message error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div class="profile-card">
+      <div class="profile-image-section">
+        <img src="assets/user.png" alt="Profile Picture" class="profile-image">
+      </div>
+      <div class="profile-details" *ngIf="!editMode">
+        <h2>{{ userProfile.username }}</h2>
+        <p class="email">{{ userProfile.email }}</p>
+
+        <div class="action-buttons">
+          <button (click)="enableEditMode()" class="btn-primary">
+            Edit Profile
+          </button>
+          <button (click)="openChangePassword()" class="btn-secondary">
+            Change Password
+          </button>
+        </div>
+      </div>
+      <div class="profile-details" *ngIf="editMode">
+        <h2>Edit Username</h2>
+        
+        <div class="edit-form">
+          <div class="field">
+            <label>Username</label>
+            <input 
+              [(ngModel)]="editForm.username" 
+              type="text"
+              placeholder="Enter username"
+              (blur)="validateUsername()"
+              [class.error]="usernameError">
+            <span class="error-text" *ngIf="usernameError">
+              {{ usernameError }}
+            </span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button 
+            (click)="saveProfile()" 
+            [disabled]="loading"
+            class="btn-primary">
+            {{ loading ? 'Saving...' : 'Save Changes' }}
+          </button>
+          <button 
+            (click)="cancelEdit()" 
+            [disabled]="loading"
+            class="btn-secondary">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-overlay" *ngIf="showChangePassword" (click)="closeChangePassword()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3>Change Password</h3>
+          <button class="close-btn" (click)="closeChangePassword()">×</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="field">
+            <label>Current Password</label>
+            <input 
+              [(ngModel)]="passwordForm.oldPassword" 
+              type="password"
+              placeholder="Enter current password"
+              [class.error]="passwordErrors.oldPassword">
+            <span class="error-text" *ngIf="passwordErrors.oldPassword">
+              {{ passwordErrors.oldPassword }}
+            </span>
+          </div>
+
+          <div class="field">
+            <label>New Password</label>
+            <input 
+              [(ngModel)]="passwordForm.newPassword" 
+              type="password"
+              placeholder="Enter new password"
+              [class.error]="passwordErrors.newPassword">
+            <span class="error-text" *ngIf="passwordErrors.newPassword">
+              {{ passwordErrors.newPassword }}
+            </span>
+          </div>
+
+          <div class="field">
+            <label>Confirm New Password</label>
+            <input 
+              [(ngModel)]="passwordForm.confirmPassword" 
+              type="password"
+              placeholder="Confirm new password"
+              [class.error]="passwordErrors.confirmPassword">
+            <span class="error-text" *ngIf="passwordErrors.confirmPassword">
+              {{ passwordErrors.confirmPassword }}
+            </span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button 
+            (click)="closeChangePassword()" 
+            [disabled]="loading"
+            class="btn-secondary">
+            Cancel
+          </button>
+          <button 
+            (click)="changePassword()" 
+            [disabled]="loading"
+            class="btn-primary">
+            {{ loading ? 'Changing...' : 'Change Password' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

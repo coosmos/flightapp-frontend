@@ -18,7 +18,7 @@
       </ng-container>
 
       <ng-template #loggedIn>
-        <span class="user">Hi, {{ getUsername() }}</span>
+        <a routerLink="/profile" class="user" (click)="closeMobileMenu()">Hi, {{ getUsername() }}</a>
         <button class="signup-btn" (click)="onLogout()">Logout</button>
       </ng-template>
 

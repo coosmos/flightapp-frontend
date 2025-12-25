@@ -31,8 +31,13 @@ export class Login {
         username: response.username,
         email: response.email
       });
+      if(response.pwdExpired===true){
+        this.router.navigate(['/change-password']);
+      }else{
+         this.router.navigate(['/']);
+      }
 
-      this.router.navigate(['/']);
+     
     },
     error: (err) => {
       this.errorMessage =
